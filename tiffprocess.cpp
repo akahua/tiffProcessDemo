@@ -1,8 +1,8 @@
 #include "tiffprocess.h"
 
+#include "tiffimage.h"
 #include "utils.h"
 #include <cstdio>
-
 #define TIFF_DBG(fmt, ...)                                                     \
   do {                                                                         \
     printf("[TIFF] " fmt "\n", ##__VA_ARGS__);                                 \
@@ -556,6 +556,7 @@ int tiffProcess::genernateTiffFile(std::string_view path,
   if (res != 0)
     return res;
 
+  dumpPsFlag(ps.ps34377);
   res = writeTiff(path, this->_tiff, ps);
   if (res != 0)
     return res;
